@@ -1,0 +1,394 @@
+{
+  "name": "AI-Powered Email Campaign Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "sendTo": "azka.sheikh07@gmail.com",
+        "subject": "={{ $json.email_subject }}",
+        "message": "={{ $json.email_html }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "112a1b6d-a94b-4ae3-9471-a1d1a50f7462",
+      "name": "Send a message",
+      "webhookId": "e0095371-76ef-4a83-beef-da5bdcfdb03b",
+      "alwaysOutputData": false,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GR3QlQYL4vtsIakQ",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": []
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1mMVHKMbF1PjIGDw91pTxMIh0chP-QN-qaUxOYmzZbWg",
+          "mode": "list",
+          "cachedResultName": "AI-Powered Email Campaign  (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mMVHKMbF1PjIGDw91pTxMIh0chP-QN-qaUxOYmzZbWg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1073702825,
+          "mode": "list",
+          "cachedResultName": "Form Responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mMVHKMbF1PjIGDw91pTxMIh0chP-QN-qaUxOYmzZbWg/edit#gid=1073702825"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1248,
+        0
+      ],
+      "id": "7676b82d-7c17-41b1-91d3-716e37fb5791",
+      "name": "Campaign Data",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "UbZBWVw7qpGLk1EO",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d471e0ad-2fe0-4407-af50-1fdf4bb6189c",
+              "name": "brand_name",
+              "value": "={{ $json['Company / Brand Name  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "7659963f-d3e4-4551-9bcc-c177515281ec",
+              "name": "website",
+              "value": "={{ $json['Website URL'] }}",
+              "type": "string"
+            },
+            {
+              "id": "aa23cfe8-9481-44cb-8d42-ae81dd84ad7f",
+              "name": "industry",
+              "value": "={{ $json['Industry  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "ead1aed0-0b32-44dc-8514-baa8d27467f9",
+              "name": "campaign_name",
+              "value": "={{ $json['Campaign Name  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "cd848b20-0054-467d-be10-d17eb1dfeca7",
+              "name": "campaign_type",
+              "value": "={{ $json['Campaign Type  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "6b6e808f-1ddb-48e0-b6e9-402c24547a3d",
+              "name": "campaign_objective",
+              "value": "={{ $json['Campaign Objective  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "63b5495c-7d94-43bc-bc35-09e96ae89f36",
+              "name": "product_name",
+              "value": "={{ $json['Product / Service Name  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "5f1ff509-6509-4ddb-9dee-86c521755c0c",
+              "name": "main_message",
+              "value": "={{ $json['Main Marketing Message  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "3bce4b86-52b4-4f8e-9d81-f74a3f7c2c6e",
+              "name": "target_audience",
+              "value": "={{ $json['Target Audience  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "f23fe520-ca9d-401e-9b4c-9d6819654968",
+              "name": "email_tone",
+              "value": "={{ $json['Preferred Email Tone  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "8b0614a7-365a-4a6d-9f22-c733c61c4ecd",
+              "name": "design_style",
+              "value": "={{ $json['Preferred Design Style  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "9d96089d-fd5a-4812-b20a-eae2066c3f48",
+              "name": "additional_info",
+              "value": "={{ $json['Additional Information  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c835504-cca8-48cc-be8f-74ad4fc789eb",
+              "name": "primary_color",
+              "value": "={{ $json['Primary Brand Color  '] }}",
+              "type": "string"
+            },
+            {
+              "id": "2a5bbe3e-7f53-4eb5-9258-ebcec513beee",
+              "name": "secondary_color",
+              "value": "={{ $json['Secondary Brand Color '] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -848,
+        0
+      ],
+      "id": "b75e25e3-6f9c-4f1d-bf42-7464f96f0845",
+      "name": "Extraction"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d68bd3a0-52d4-495e-8c5b-aeb7f6ee348d",
+              "name": "ai_prompt",
+              "value": "={{\n`You are an expert Marketing email campaign designer, copywriter, and HTML and CSS developer.\n\nCreate ONE complete, professional Marketing email design using the information below make sure It looks visually appealing add CSS, colors and make it long.\n\nCLIENT DETAILS:\nBrand: ${$json.brand_name || \"Not provided\"}\nWebsite: ${$json.website || \"Not provided\"}\nIndustry: ${$json.industry || \"Not provided\"}\n\nCAMPAIGN DETAILS:\nCampaign Name: ${$json.campaign_name || \"Not provided\"}\nCampaign Type: ${$json.campaign_type || \"Not provided\"}\nObjective: ${$json.campaign_objective || \"Not provided\"}\nProduct/Service: ${$json.product_name || \"Not provided\"}\nMain Message: ${$json.main_message || \"Not provided\"}\nTarget Audience: ${$json.target_audience || \"General audience\"}\n\nDESIGN PREFERENCES:\nEmail Tone: ${$json.email_tone || \"Professional\"}\nDesign Style: ${$json.design_style || \"Modern\"}\nPrimary Color: ${$json.primary_color || \"\"}\nSecondary Color: ${$json.secondary_color || \"\"}\nAdditional Instructions: ${$json.additional_info || \"None\"}\n\nCONTENT REQUIREMENTS:\n1. Write one compelling subject line.\n2. Create engaging email copy for the specified audience.\n3. Use a strong headline and introduction.\n4. Explain the product or service and its benefits.\n5. Include one clear CTA button.\n6. Include a professional footer.\n7. Follow the requested tone, design style, and brand colors.\n8. Do not invent prices, discounts, testimonials, statistics, or guarantees.\n9. Avoid generic filler content.\n10. Do not use em-dashes.\n\nHTML REQUIREMENTS:\n1. Generate a complete HTML document.\n2. Use CSS for Visuals.\n3. Use email-compatible table-based layouts.\n4. Make the design responsive and mobile-friendly.\n5. Use readable typography and appropriate spacing.\n6. Use the primary and secondary brand colors consistently.\n7. Use an HTML anchor tag styled as a CTA button.\n8. Do not use JavaScript, external CSS, external fonts, or forms.\n\nCSS AND RESPONSIVENESS:\n- Use inline styles on HTML elements.\n- Do not use CSS placeholders.\n- Use actual brand color values.\n- Use a table-based email layout with a maximum width of 600px.\n- Include a mobile-friendly viewport meta tag.\n- Use email-safe CSS.\n- Make the CTA button an actual clickable anchor link.\n\nCRITICAL OUTPUT FORMAT:\n\nYour entire response MUST be a JSON object.\n\nFollow this exact structure:\n\n{\n\"email_subject\": \"Your subject line here\",\n\"email_html\": \"<html><body><h1>Your email content</h1></body></html>\"\n}\n\nSTRICT REQUIREMENTS:\n1. Return ONLY the JSON object.\n2. Never write an introduction, explanation, conclusion, or commentary.\n3. Never use Markdown code fences.\n4. Use double quotes for all JSON keys and string values.\n5. The email_html value MUST be a JSON string, NOT a JavaScript template literal.\n6. Escape every double quote inside email_html as \"\n7. Do not use backticks anywhere in the JSON.\n8. Do not include additional properties such as footer, CTA, or metadata.\n9. Do not include trailing commas.\n10. Use actual HEX color values supplied in the client details. Never use placeholders such as <primary_color>.\n11. Ensure the output can be parsed directly using JSON.parse().\nThe JSON must contain exactly:\n- email_subject\n- email_html\nReturn the JSON object and nothing else.`\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -672,
+        0
+      ],
+      "id": "dcb0477b-5729-4285-be0f-568a3a72eb60",
+      "name": "Build AI Prompt"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst items = $input.all();\n\nif (items.length <= 1) {\n  return items;\n}\n\n// Identify the timestamp column\nconst getTimestamp = (item) => {\n  const value =\n    item.json.Timestamp ??\n    item.json.timestamp ??\n    item.json['Submitted At'];\n\n  const parsed = Date.parse(value);\n  return Number.isFinite(parsed) ? parsed : null;\n};\n\n// Sort newest first\nconst sorted = [...items].sort((a, b) => {\n  return (getTimestamp(b) ?? 0) - (getTimestamp(a) ?? 0);\n});\n\n// Return only the newest row\nreturn [sorted[0]];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1056,
+        0
+      ],
+      "id": "00d35ca0-2daf-44da-a653-7825ab053157",
+      "name": "Email Campaign Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst items = $input.all();\n\nreturn items.map(item => {\n  const raw = item.json.output;\n\n  if (typeof raw !== 'string' || !raw.trim()) {\n    throw new Error('LLM response is empty or missing.');\n  }\n\n  // Find the JSON object inside the response\n  const start = raw.indexOf('{');\n\n  if (start === -1) {\n    throw new Error(\n      'No opening JSON brace found. Actual response: ' +\n      raw.slice(0, 500)\n    );\n  }\n\n  // Extract everything from the first opening brace\n  let jsonText = raw.slice(start).trim();\n\n  // Remove Markdown code fences\n  jsonText = jsonText\n    .replace(/^```(?:json)?\\s*/i, '')\n    .replace(/\\s*```$/, '')\n    .trim();\n\n  // Fix the LLM's invalid backticks around the subject\n  jsonText = jsonText.replace(\n    /(\"email_subject\"\\s*:\\s*)`([^`]+)`/,\n    (match, prefix, subject) =>\n      prefix + JSON.stringify(subject.replace(/^[\"']|[\"']$/g, ''))\n  );\n\n  // Remove trailing commas\n  jsonText = jsonText.replace(/,\\s*([}\\]])/g, '$1');\n\n  let campaign;\n\n  try {\n    campaign = JSON.parse(jsonText);\n  } catch (error) {\n    throw new Error(\n      'JSON parsing failed: ' + error.message +\n      '\\nResponse beginning: ' + jsonText.slice(0, 700)\n    );\n  }\n\n  if (\n    typeof campaign.email_subject !== 'string' ||\n    typeof campaign.email_html !== 'string'\n  ) {\n    throw new Error('Required email fields are missing.');\n  }\n\n  return {\n    json: {\n      email_subject: campaign.email_subject,\n      email_html: campaign.email_html,\n      generation_status: 'success'\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -192,
+        0
+      ],
+      "id": "13d22218-2b76-4d51-8841-7073b89afd30",
+      "name": "Cleaning Data"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "llama3.2:1b",
+          "mode": "list",
+          "cachedResultName": "llama3.2:1b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.ai_prompt }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "typeVersion": 1,
+      "position": [
+        -496,
+        -416
+      ],
+      "id": "86f3c93c-5fe6-426b-a5bf-28dd884f123e",
+      "name": "Message a model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "bzL1m5Z7S8Kqq9Uo",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.ai_prompt }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -512,
+        0
+      ],
+      "id": "9c056c0f-cbdd-48f9-a924-360e58b25d8e",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        -512,
+        176
+      ],
+      "id": "960fb201-1ccb-4795-abee-130d10c425f9",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ikloTnFHJ0wcqT6Y",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Campaign Data": {
+      "main": [
+        [
+          {
+            "node": "Email Campaign Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraction": {
+      "main": [
+        [
+          {
+            "node": "Build AI Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build AI Prompt": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        []
+      ]
+    },
+    "Email Campaign Data": {
+      "main": [
+        [
+          {
+            "node": "Extraction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cleaning Data": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        []
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Cleaning Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "e741f343-c2af-439e-bdf9-d317390a536d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "02d81440eb4d80cfc5b0ed16a6c35031c2dd9739aacd5bd2a7de6f6881dfda45"
+  },
+  "nodeGroups": [],
+  "id": "YC58LXZtKsmHPLYt",
+  "tags": [
+    {
+      "updatedAt": "2026-11-10T09:01:53.088Z",
+      "createdAt": "2026-11-10T09:01:53.088Z",
+      "id": "LPXArjya5x8kOM8s",
+      "name": "Email with Ollama"
+    }
+  ]
+}
